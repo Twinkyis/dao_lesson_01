@@ -1,16 +1,16 @@
 package Service;
 
 import B_logic.Util;
-import dao.ProductDao;
+import dao.ProductDAO;
 import entity.Product;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductService extends Util implements ProductDao {
+public class ProductService extends Util implements ProductDAO {
 
-            Connection connection = getConnection();
+    Connection connection = getConnection();
 
     @Override
     public void add(Product product) throws SQLException {
@@ -34,9 +34,9 @@ public class ProductService extends Util implements ProductDao {
             if (preparedStatement != null) {
                 preparedStatement.close();
             }
-            if (connection != null) {
-                connection.close();
-            }
+//            if (connection != null) {
+//                connection.close();
+//            }
         }
     }
 
@@ -68,9 +68,9 @@ public class ProductService extends Util implements ProductDao {
             if (statement != null) {
                 statement.close();
             }
-            if (connection != null){
-                connection.close();
-            }
+//            if (connection != null){
+//                connection.close();
+//            }
         }
         return productList;
     }
@@ -87,8 +87,6 @@ public class ProductService extends Util implements ProductDao {
         try {
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, idproduct);
-//            preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE,
-//                    ResultSet.CONCUR_UPDATABLE);
 
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
@@ -98,17 +96,15 @@ public class ProductService extends Util implements ProductDao {
                 product.setPrice(resultSet.getInt("price"));
                 product.setDiscription(resultSet.getString("discription"));
 
-//                preparedStatement.executeUpdate();
-
         } catch (SQLException e){
             e.printStackTrace();
         } finally {
             if (preparedStatement != null) {
                 preparedStatement.close();
             }
-            if (connection != null) {
-                connection.close();
-            }
+//            if (connection != null) {
+//                connection.close();
+//            }
         }
 
             return product;
@@ -136,9 +132,9 @@ public class ProductService extends Util implements ProductDao {
             if (preparedStatement != null) {
                 preparedStatement.close();
             }
-            if (connection != null) {
-                connection.close();
-            }
+//            if (connection != null) {
+//                connection.close();
+//            }
         }
     }
 
@@ -159,10 +155,15 @@ public class ProductService extends Util implements ProductDao {
             if (preparedStatement != null) {
                 preparedStatement.close();
             }
-            if (connection != null) {
-                connection.close();
-            }
+
         }
     }
+    public void closeConnection () throws SQLException{
+
+        if (connection != null) {
+            connection.close();
+        }
+    }
+
 
 }
