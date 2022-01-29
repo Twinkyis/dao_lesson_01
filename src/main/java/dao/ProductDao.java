@@ -14,11 +14,11 @@ public interface ProductDao {
     List<Product> getAll() throws SQLException;
 
     //select
-    Product getById(int idproduct);
+    Product getById(int idproduct) throws SQLException;
 
     //update
-    void update(Product product);
+    void update(Product product) throws SQLException;
 
     //remove
-    void remove(Product product);
+    void remove(Product product) throws SQLException;
 }

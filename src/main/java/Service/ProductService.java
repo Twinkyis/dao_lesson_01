@@ -42,14 +42,15 @@ public class ProductService extends Util implements ProductDao {
 
     @Override
     public List<Product> getAll() throws SQLException {
+
         List <Product> productList = new ArrayList<>();
 
         String sql = "SELECT IDPRODUCT, NAMEPRODUCT, PRICE, DISCRIPTION FROM PRODUCT";
 
         Statement statement = null;
+
         try {
             statement = connection.createStatement();
-
             ResultSet resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {
@@ -75,17 +76,93 @@ public class ProductService extends Util implements ProductDao {
     }
 
     @Override
-    public Product getById(int idproduct) {
-        return null;
+    public Product getById(int idproduct) throws SQLException {
+
+
+
+        String sql = "SELECT IDPRODUCT, NAMEPRODUCT, PRICE, DISCRIPTION FROM product where (idproduct=?)";
+        PreparedStatement preparedStatement = null;
+        Product product = new Product();
+
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, idproduct);
+//            preparedStatement = connection.prepareStatement(sql, ResultSet.TYPE_SCROLL_SENSITIVE,
+//                    ResultSet.CONCUR_UPDATABLE);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+
+                product.setIdproduct(resultSet.getInt("idproduct"));
+                product.setNameproduct(resultSet.getString("nameproduct"));
+                product.setPrice(resultSet.getInt("price"));
+                product.setDiscription(resultSet.getString("discription"));
+
+//                preparedStatement.executeUpdate();
+
+        } catch (SQLException e){
+            e.printStackTrace();
+        } finally {
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }
+
+            return product;
     }
 
     @Override
-    public void update(Product product) {
+    public void update(Product product) throws SQLException {
+        PreparedStatement preparedStatement = null;
 
+        String sql = "UPDATE PRODUCT SET  NAMEPRODUCT = ?, PRICE = ?, DISCRIPTION = ? where IDPRODUCT = ?";
+
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+
+            preparedStatement.setInt(1, product.getIdproduct());
+            preparedStatement.setString(2, product.getNameproduct());
+            preparedStatement.setInt(3, product.getPrice());
+            preparedStatement.setString(4, product.getDiscription());
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }
     }
 
     @Override
-    public void remove(Product product) {
+    public void remove(Product product) throws SQLException {
 
+        PreparedStatement preparedStatement = null;
+
+        String sql = "DELETE FROM PRODUCT WHERE IDPRODUCT = ?";
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setLong(1, product.getIdproduct());
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }
     }
+
 }
