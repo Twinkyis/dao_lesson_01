@@ -3,7 +3,9 @@
     <words>
       <w>discription</w>
       <w>idproduct</w>
+      <w>idshopingcart</w>
       <w>nameproduct</w>
+      <w>shoping</w>
     </words>
   </dictionary>
 </component>

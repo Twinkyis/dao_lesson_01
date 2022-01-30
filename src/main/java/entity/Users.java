@@ -95,6 +95,6 @@ public class Users {
                 ", lastname='" + lastname + '\'' +
                 ", sex='" + sex + '\'' +
                 ", age=" + age +
-                '}';
+                '}' + '\n';
     }
 }

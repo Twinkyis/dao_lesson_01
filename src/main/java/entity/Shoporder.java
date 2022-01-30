@@ -6,6 +6,9 @@ import javax.persistence.*;
 @Table(name = "shoporder", schema = "mydb", catalog = "")
 public class Shoporder {
     private int idorder;
+    private int idproduct;
+    private int iduser;
+
     private Product productByIdproduct;
 
     @Id
@@ -16,6 +19,26 @@ public class Shoporder {
 
     public void setIdorder(int idorder) {
         this.idorder = idorder;
+    }
+
+    @Id
+    @Column(name = "idproduct", nullable = false)
+    public int getIdproduct() {
+        return idproduct;
+    }
+
+    public void setIdproduct(int idproduct) {
+        this.idproduct = idproduct;
+    }
+
+    @Id
+    @Column(name = "iduser", nullable = false)
+    public int getIduser() {
+        return iduser;
+    }
+
+    public void setIduser(int iduser) {
+        this.iduser = iduser;
     }
 
     @Override
@@ -48,8 +71,7 @@ public class Shoporder {
     @Override
     public String toString() {
         return "ShoporderEntity{" +
-                "idorder=" + idorder +
-                ", productByIdproduct=" + productByIdproduct +
-                '}';
+                " idorder = " + idorder + " iduser = " + iduser + " idproduct = " + idproduct +
+                ", productByIdproduct = " + productByIdproduct + '}' + '\n';
     }
 }

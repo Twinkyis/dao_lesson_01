@@ -9,6 +9,8 @@ import javax.persistence.Table;
 @Table(name = "shopingcart", schema = "mydb", catalog = "")
 public class Shopingcart {
     private int idshopingcart;
+    private int idorder;
+    private int iduser;
 
     @Id
     @Column(name = "idshopingcart", nullable = false)
@@ -18,6 +20,26 @@ public class Shopingcart {
 
     public void setIdshopingcart(int idshopingcart) {
         this.idshopingcart = idshopingcart;
+    }
+
+    @Id
+    @Column(name = "idorder", nullable = false)
+    public int getIdorder() {
+        return idorder;
+    }
+
+    public void setIdorder(int idorder) {
+        this.idorder = idorder;
+    }
+
+    @Id
+    @Column(name = "iduser", nullable = false)
+    public int getIduser() {
+        return iduser;
+    }
+
+    public void setIduser(int iduser) {
+        this.iduser = iduser;
     }
 
     @Override
@@ -40,7 +62,7 @@ public class Shopingcart {
     @Override
     public String toString() {
         return "ShopingcartEntity{" +
-                "idshopingcart=" + idshopingcart +
-                '}';
+                " idshopingcart = " + idshopingcart + " iduser = " + iduser + " idorder = " + idorder +
+                '}' + '\n';
     }
 }

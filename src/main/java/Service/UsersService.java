@@ -14,6 +14,7 @@ public class UsersService extends Util implements UserDAO {
 
     @Override
     public void add(Users users) throws SQLException {
+
         PreparedStatement preparedStatement = null;
 
         String sql = "INSERT INTO USERS (IDUSER, FIRSTNAME, LASTNAME, SEX, AGE) VALUE (?, ?, ?, ?, ?)";
@@ -53,7 +54,7 @@ public class UsersService extends Util implements UserDAO {
 
             while (resultSet.next()) {
                 Users users = new Users();
-                users.setIduser(resultSet.getInt("iduser"));
+                users.setIduser(resultSet.getInt("IdUser"));
                 users.setFirstname(resultSet.getString("FirstNameUser"));
                 users.setLastname(resultSet.getString("LastNameUser"));
                 users.setAge(resultSet.getInt("AgeUser"));

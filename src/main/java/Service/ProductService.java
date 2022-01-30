@@ -34,9 +34,6 @@ public class ProductService extends Util implements ProductDAO {
             if (preparedStatement != null) {
                 preparedStatement.close();
             }
-//            if (connection != null) {
-//                connection.close();
-//            }
         }
     }
 
@@ -78,10 +75,10 @@ public class ProductService extends Util implements ProductDAO {
     @Override
     public Product getById(int idproduct) throws SQLException {
 
+        String sql = "SELECT IDPRODUCT, NAMEPRODUCT, PRICE, DISCRIPTION FROM PRODUCT WHERE (IDPRODUCT=?)";
 
-
-        String sql = "SELECT IDPRODUCT, NAMEPRODUCT, PRICE, DISCRIPTION FROM product where (idproduct=?)";
         PreparedStatement preparedStatement = null;
+
         Product product = new Product();
 
         try {
@@ -132,9 +129,6 @@ public class ProductService extends Util implements ProductDAO {
             if (preparedStatement != null) {
                 preparedStatement.close();
             }
-//            if (connection != null) {
-//                connection.close();
-//            }
         }
     }
 
@@ -158,6 +152,7 @@ public class ProductService extends Util implements ProductDAO {
 
         }
     }
+
     public void closeConnection () throws SQLException{
 
         if (connection != null) {
