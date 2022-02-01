@@ -13,7 +13,7 @@ public class ProductService extends Util implements ProductDAO {
     Connection connection = getConnection();
 
     @Override
-    public void add(Product product) throws SQLException {
+    public void addProduct(Product product) throws SQLException {
         PreparedStatement preparedStatement = null;
 
         String sql = "INSERT INTO PRODUCT (IDPRODUCT, NAMEPRODUCT, PRICE, DISCRIPTION) VALUE (?, ?, ?, ?)";
@@ -38,7 +38,7 @@ public class ProductService extends Util implements ProductDAO {
     }
 
     @Override
-    public List<Product> getAll() throws SQLException {
+    public List<Product> getAllProduct() throws SQLException {
 
         List <Product> productList = new ArrayList<>();
 
@@ -52,6 +52,7 @@ public class ProductService extends Util implements ProductDAO {
 
             while (resultSet.next()) {
                 Product product = new Product();
+
                 product.setIdproduct(resultSet.getInt("idproduct"));
                 product.setNameproduct(resultSet.getString("nameproduct"));
                 product.setPrice(resultSet.getInt("price"));
@@ -73,7 +74,7 @@ public class ProductService extends Util implements ProductDAO {
     }
 
     @Override
-    public Product getById(int idproduct) throws SQLException {
+    public Product getByIdProduct(int idproduct) throws SQLException {
 
         String sql = "SELECT IDPRODUCT, NAMEPRODUCT, PRICE, DISCRIPTION FROM PRODUCT WHERE (IDPRODUCT=?)";
 
@@ -108,7 +109,7 @@ public class ProductService extends Util implements ProductDAO {
     }
 
     @Override
-    public void update(Product product) throws SQLException {
+    public void updateProduct(Product product) throws SQLException {
         PreparedStatement preparedStatement = null;
 
         String sql = "UPDATE PRODUCT SET  NAMEPRODUCT = ?, PRICE = ?, DISCRIPTION = ? where IDPRODUCT = ?";
@@ -133,7 +134,7 @@ public class ProductService extends Util implements ProductDAO {
     }
 
     @Override
-    public void remove(Product product) throws SQLException {
+    public void removeProduct(Product product) throws SQLException {
 
         PreparedStatement preparedStatement = null;
 
@@ -153,7 +154,7 @@ public class ProductService extends Util implements ProductDAO {
         }
     }
 
-    public void closeConnection () throws SQLException{
+    public void closeConnectionProduct () throws SQLException{
 
         if (connection != null) {
             connection.close();

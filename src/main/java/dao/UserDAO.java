@@ -7,17 +7,17 @@ import java.util.List;
 
 public interface UserDAO {
     //create
-    void add(Users users) throws SQLException;
+    void addUsers(Users users) throws SQLException;
 
     //read
-    List <Users> getAll () throws SQLException;
+    List <Users> getAllUsers () throws SQLException;
 
     //select
-    Users getById (int iduser) throws SQLException;
+    Users getByIdUsers (int iduser) throws SQLException;
 
     //update
-    void update(Users users) throws SQLException;
+    void updateUsers(Users users) throws SQLException;
 
     //remove
-    void remove(Users users) throws  SQLException;
+    void removeUsers(Users users) throws  SQLException;
 }

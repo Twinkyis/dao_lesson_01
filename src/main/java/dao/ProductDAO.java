@@ -8,17 +8,17 @@ import java.util.List;
 public interface ProductDAO {
 
     //create
-    void add(Product product) throws SQLException;
+    void addProduct(Product product) throws SQLException;
 
     //read
-    List<Product> getAll() throws SQLException;
+    List<Product> getAllProduct() throws SQLException;
 
     //select
-    Product getById(int idproduct) throws SQLException;
+    Product getByIdProduct(int idproduct) throws SQLException;
 
     //update
-    void update(Product product) throws SQLException;
+    void updateProduct(Product product) throws SQLException;
 
     //remove
-    void remove(Product product) throws SQLException;
+    void removeProduct(Product product) throws SQLException;
 }

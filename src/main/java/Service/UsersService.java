@@ -13,7 +13,7 @@ public class UsersService extends Util implements UserDAO {
     Connection connection = getConnection();
 
     @Override
-    public void add(Users users) throws SQLException {
+    public void addUsers(Users users) throws SQLException {
 
         PreparedStatement preparedStatement = null;
 
@@ -40,7 +40,7 @@ public class UsersService extends Util implements UserDAO {
     }
 
     @Override
-    public List<Users> getAll() throws SQLException {
+    public List<Users> getAllUsers() throws SQLException {
 
         List<Users> usersList = new ArrayList<>();
 
@@ -73,7 +73,7 @@ public class UsersService extends Util implements UserDAO {
     }
 
     @Override
-    public Users getById(int iduser) throws SQLException {
+    public Users getByIdUsers(int iduser) throws SQLException {
 
         String sql = "SELECT IDUSER, FIRSTNAME, LASTNAME, AGE, SEX";
         PreparedStatement preparedStatement = null;
@@ -103,7 +103,7 @@ public class UsersService extends Util implements UserDAO {
     }
 
     @Override
-    public void update(Users users) throws SQLException {
+    public void updateUsers(Users users) throws SQLException {
         PreparedStatement preparedStatement = null;
 
         String sql = "UPDATE USERS SET FIRSTNAME, LASTNAME, AGE, SEX WHERE IDUSER = ?";
@@ -129,7 +129,7 @@ public class UsersService extends Util implements UserDAO {
     }
 
     @Override
-    public void remove(Users users) throws SQLException {
+    public void removeUsers(Users users) throws SQLException {
 
         PreparedStatement preparedStatement = null;
 
@@ -148,7 +148,7 @@ public class UsersService extends Util implements UserDAO {
         }
     }
 
-    public void closeConnection () throws SQLException{
+    public void closeConnectionUsers () throws SQLException{
 
         if (connection != null) {
             connection.close();

@@ -76,7 +76,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "ProductEntity{" +
+        return " ProductEntity{" +
                 "idproduct=" + idproduct +
                 ", nameproduct='" + nameproduct + '\'' +
                 ", price=" + price +

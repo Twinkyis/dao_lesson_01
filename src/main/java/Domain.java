@@ -1,6 +1,7 @@
 import Service.ProductService;
 import Service.ShopOrderService;
 import Service.ShopingCartService;
+import Service.Test_Order;
 import entity.Product;
 import entity.Shoporder;
 
@@ -38,12 +39,12 @@ public class Domain {
 
 //        ShopingCartService shopingCartService = new ShopingCartService();
 
-        ShopOrderService shopOrderService = new ShopOrderService();
+       Test_Order test_order = new Test_Order();
 
         try {
 //            System.out.println(shopingCartService.getAll());
-            System.out.println(shopOrderService.getAll());
-            shopOrderService.closeConnection();
+            System.out.println(test_order.getByOrder());
+            test_order.closeConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         }

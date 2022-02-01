@@ -8,17 +8,17 @@ import java.util.List;
 public interface ShopingCartDAO {
 
     //create
-    void add(Shopingcart shopingcart) throws SQLException;
+    void addShopingcart(Shopingcart shopingcart) throws SQLException;
 
     //read
-    List <Shopingcart> getAll () throws SQLException;
+    List <Shopingcart> getAllShopingcart() throws SQLException;
 
     //select
-    Shopingcart getById (int idshopingcart) throws SQLException;
+    Shopingcart getByIdShopingcart(int idshopingcart) throws SQLException;
 
     //update
-    void update (Shopingcart shopingcart) throws SQLException;
+    void updateShopingcart(Shopingcart shopingcart) throws SQLException;
 
     //remove
-    void remove (Shopingcart shopingcart) throws SQLException;
+    void removeShopingcart(Shopingcart shopingcart) throws SQLException;
 }

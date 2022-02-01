@@ -13,7 +13,7 @@ public class ShopOrderService extends Util implements ShopOrderDAO {
     Connection connection = getConnection();
 
     @Override
-    public void add(Shoporder shoporder) throws SQLException {
+    public void addShoporder(Shoporder shoporder) throws SQLException {
         PreparedStatement preparedStatement = null;
 
         String sql ="INSERT INTO SHOPORDER (IDSHOPORDER, IDUSER, IDPRODUCT) VALUE (?, ? , ?)";
@@ -36,7 +36,7 @@ public class ShopOrderService extends Util implements ShopOrderDAO {
     }
 
     @Override
-    public List<Shoporder> getAll() throws SQLException {
+    public List<Shoporder> getAllShoporder() throws SQLException {
 
         List<Shoporder> OrderList = new ArrayList<>();
 
@@ -69,7 +69,7 @@ public class ShopOrderService extends Util implements ShopOrderDAO {
     }
 
     @Override
-    public Shoporder getById(int idorder) throws SQLException {
+    public Shoporder getByIdShoporder(int idorder) throws SQLException {
 
         String sql = "SELECT IDUSER, IDPRODUCT WHERE IDSHOPORDER = ?";
 
@@ -99,7 +99,7 @@ public class ShopOrderService extends Util implements ShopOrderDAO {
     }
 
     @Override
-    public void update(Shoporder shoporder) throws SQLException {
+    public void updateShoporder(Shoporder shoporder) throws SQLException {
 
         PreparedStatement preparedStatement = null;
 
@@ -123,7 +123,7 @@ public class ShopOrderService extends Util implements ShopOrderDAO {
     }
 
     @Override
-    public void remove(Shoporder shoporder) throws SQLException {
+    public void removeShoporder(Shoporder shoporder) throws SQLException {
 
         PreparedStatement preparedStatement = null;
 
@@ -143,7 +143,8 @@ public class ShopOrderService extends Util implements ShopOrderDAO {
         }
     }
 
-    public void closeConnection () throws SQLException{
+
+    public void closeConnectionShoporder () throws SQLException{
 
         if (connection != null) {
             connection.close();

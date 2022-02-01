@@ -13,7 +13,7 @@ public class ShopingCartService extends Util implements ShopingCartDAO {
     Connection connection = getConnection();
 
     @Override
-    public void add(Shopingcart shopingcart) throws SQLException {
+    public void addShopingcart(Shopingcart shopingcart) throws SQLException {
 
         PreparedStatement preparedStatement = null;
 
@@ -38,7 +38,7 @@ public class ShopingCartService extends Util implements ShopingCartDAO {
     }
 
     @Override
-    public List<Shopingcart> getAll() throws SQLException {
+    public List<Shopingcart> getAllShopingcart() throws SQLException {
 
         List <Shopingcart> ShopingCartList = new ArrayList<>();
 
@@ -69,7 +69,7 @@ public class ShopingCartService extends Util implements ShopingCartDAO {
     }
 
     @Override
-    public Shopingcart getById(int idshopingcart) throws SQLException {
+    public Shopingcart getByIdShopingcart(int idshopingcart) throws SQLException {
 
         String sql = "SELECT IDUSER, IDORDER FROM SHOPINGCART WHERE (IDSHOPINGCART = ?)";
 
@@ -99,7 +99,7 @@ public class ShopingCartService extends Util implements ShopingCartDAO {
     }
 
     @Override
-    public void update(Shopingcart shopingcart) throws SQLException {
+    public void updateShopingcart(Shopingcart shopingcart) throws SQLException {
 
         PreparedStatement preparedStatement = null;
 
@@ -123,7 +123,7 @@ public class ShopingCartService extends Util implements ShopingCartDAO {
     }
 
     @Override
-    public void remove(Shopingcart shopingcart) throws SQLException {
+    public void removeShopingcart(Shopingcart shopingcart) throws SQLException {
         PreparedStatement preparedStatement = null;
 
         String sql = "DELETE FROM SHOPINGCART WHERE IDSHOPINGCART = ?";
@@ -140,7 +140,7 @@ public class ShopingCartService extends Util implements ShopingCartDAO {
             }
         }
     }
-    public void closeConnection() throws SQLException {
+    public void closeConnectionShopingcart() throws SQLException {
         if (connection != null) {
             connection.close();
         }

@@ -8,17 +8,17 @@ import java.util.List;
 public interface ShopOrderDAO {
 
     //create
-    void add(Shoporder shoporder) throws SQLException;
+    void addShoporder(Shoporder shoporder) throws SQLException;
 
     //read
-    List <Shoporder> getAll() throws SQLException;
+    List <Shoporder> getAllShoporder() throws SQLException;
 
     //select
-    Shoporder getById (int idorder) throws SQLException;
+    Shoporder getByIdShoporder (int idorder) throws SQLException;
 
     //update
-    void update (Shoporder shoporder) throws SQLException;
+    void updateShoporder (Shoporder shoporder) throws SQLException;
 
     //remove
-    void remove (Shoporder shoporder) throws SQLException;
+    void removeShoporder (Shoporder shoporder) throws SQLException;
 }
