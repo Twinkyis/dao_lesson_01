@@ -1,7 +1,4 @@
-import Service.ProductService;
-import Service.ShopOrderService;
-import Service.ShopingCartService;
-import Service.Test_Order;
+import Service.*;
 import entity.Product;
 import entity.Shoporder;
 
@@ -10,6 +7,21 @@ import java.util.List;
 
 public class Domain {
     public static void main(String[] args) {
+
+
+
+
+//        ProductService productService = new ProductService();
+//
+//        try {
+//            System.out.println(productService.getAllProduct());
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+
+
+
+
 
 //        ProductService productService = new ProductService();
 //
@@ -37,16 +49,6 @@ public class Domain {
 //            e.printStackTrace();
 //        }
 
-//        ShopingCartService shopingCartService = new ShopingCartService();
 
-       Test_Order test_order = new Test_Order();
-
-        try {
-//            System.out.println(shopingCartService.getAll());
-            System.out.println(test_order.getByOrder());
-            test_order.closeConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 }

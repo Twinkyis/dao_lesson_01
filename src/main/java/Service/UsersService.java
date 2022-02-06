@@ -24,9 +24,9 @@ public class UsersService extends Util implements UserDAO {
 
             preparedStatement.setLong(1, users.getIduser());
             preparedStatement.setString(2, users.getFirstname());
-            preparedStatement.setString(2, users.getLastname());
-            preparedStatement.setInt(3, users.getAge());
-            preparedStatement.setString(4, users.getSex());
+            preparedStatement.setString(3, users.getLastname());
+            preparedStatement.setInt(4, users.getAge());
+            preparedStatement.setString(5, users.getSex());
 
             preparedStatement.executeUpdate();
 
@@ -44,7 +44,7 @@ public class UsersService extends Util implements UserDAO {
 
         List<Users> usersList = new ArrayList<>();
 
-        String sql = "SELECT IDUSER, FIRSTNAME, AGE, SEX, LASTNAME FROM USERS";
+        String sql = "SELECT iduser, firstname, lastname, sex, age FROM users";
 
         Statement statement = null;
 
@@ -55,10 +55,10 @@ public class UsersService extends Util implements UserDAO {
             while (resultSet.next()) {
                 Users users = new Users();
                 users.setIduser(resultSet.getInt("IdUser"));
-                users.setFirstname(resultSet.getString("FirstNameUser"));
-                users.setLastname(resultSet.getString("LastNameUser"));
-                users.setAge(resultSet.getInt("AgeUser"));
-                users.setSex(resultSet.getString("SexUser"));
+                users.setFirstname(resultSet.getString("firstname"));
+                users.setLastname(resultSet.getString("lastname"));
+                users.setAge(resultSet.getInt("age"));
+                users.setSex(resultSet.getString("sex"));
 
                 usersList.add(users);
             }

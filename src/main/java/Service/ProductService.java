@@ -14,6 +14,7 @@ public class ProductService extends Util implements ProductDAO {
 
     @Override
     public void addProduct(Product product) throws SQLException {
+
         PreparedStatement preparedStatement = null;
 
         String sql = "INSERT INTO PRODUCT (IDPRODUCT, NAMEPRODUCT, PRICE, DISCRIPTION) VALUE (?, ?, ?, ?)";

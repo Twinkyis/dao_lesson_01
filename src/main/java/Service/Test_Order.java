@@ -14,47 +14,18 @@ public class Test_Order extends Util {
 
     Connection connection = getConnection();
 
-//    public HashMap<Object, Object> getByOrder() throws SQLException {
-//
-//            HashMap <Object, Object> sum1 = new HashMap<Object, Object>();
-//
-//        String sql1 = "SELECT shoporder.idproduct, product.nameproduct, iduser FROM shoporder JOIN product ON shoporder.idproduct = product.idproduct ";
-//
-//        Statement statement = null;
-//
-//        try {
-//            statement = connection.createStatement();
-//            ResultSet resultSet = statement.executeQuery(sql1);
-//            resultSet.next();
-//                while (resultSet.next()) {
-//
-//                    Product product1 = new Product();
-//                    Users users1 = new Users();
-//
-//                        users1.setIduser(resultSet.getInt("IdUser"));
-//                        product1.setIdproduct(resultSet.getInt("IdProduct"));
-//                        product1.setNameproduct(resultSet.getString("NameProduct"));
-//
-//                        sum1.put(users1, product1);
-//                }
-//            } catch (SQLException e) {
-//            e.printStackTrace();
-//        } finally {
-//            if (statement != null) {
-//                statement.close();
-//            }
-//        }
-//        return sum1;
-//    }
-
     public HashMap<Object, Object> getByOrder() throws SQLException {
 
         Statement statement = null;
 //        HashMap <Object, Object> sum1 = new HashMap<Object, Object>();
+
         HashMap <Object, Object> sum2 = new HashMap<Object, Object>();
+//        HashMap<Object, Object> sumAll = new HashMap<>();
+
         Users users3 = new Users();
         Product product3 = new Product();
-        Shoporder shoporder3 = new Shoporder();
+
+//        Shoporder shoporder3 = new Shoporder();
 
 
         String sql2 = "SELECT users.firstname, product.nameproduct, product.price, shoporder.iduser, shoporder.idproduct " +
@@ -64,43 +35,30 @@ public class Test_Order extends Util {
                 "JOIN users " +
                 "ON shoporder.iduser = users.iduser ";
 
-
-//        String sql1 = "SELECT shoporder.idproduct, product.nameproduct, iduser FROM shoporder JOIN product ON shoporder.idproduct = product.idproduct ";
-//        try {
-//            statement = connection.createStatement();
-//            ResultSet resultSet = statement.executeQuery(sql1);
-//            resultSet.next();
-//            while (resultSet.next()) {
-//
-//                Product product1 = new Product();
-//                Users users1 = new Users();
-//
-//                users1.setIduser(resultSet.getInt("IdUser"));
-//                product1.setIdproduct(resultSet.getInt("IdProduct"));
-//                product1.setNameproduct(resultSet.getString("NameProduct"));
-//
-//                sum1.put(users1, product1);
-//            }
-
             try {
-                statement = connection.createStatement();
-                ResultSet resultSet1 = statement.executeQuery(sql2);
-                resultSet1.next();
 
-                while (resultSet1.next()) {
+            statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql2);
+            resultSet.next();
+
+            while (resultSet.next()) {
+
+                users3.setFirstname(resultSet.getString("firstname"));
+
+                product3.setNameproduct(resultSet.getString("nameproduct"));
+                product3.setPrice(resultSet.getInt("price"));
+
+                users3.setIduser(resultSet.getInt("iduser"));
+                product3.setIdproduct(resultSet.getInt("idproduct"));
 
 
-                    users3.setFirstname(resultSet1.getString("UserName"));
-                    product3.setPrice(resultSet1.getInt("Price"));
-                    product3.setNameproduct(resultSet1.getString("NameProduct"));
-//                    shoporder3.setIdorder(resultSet1.getInt("IdOrder"));
-                    shoporder3.setIduser(resultSet1.getInt("IdUser"));
-                    shoporder3.setIdproduct(resultSet1.getInt("IdProduct"));
+                sum2.put(users3, product3);
+
+            }
+        }
 
 
-                    sum2.put(users3, product3);
-                }
-        } catch (SQLException e) {
+            catch (SQLException e) {
             e.printStackTrace();
         } finally {
             if (statement != null) {
@@ -116,10 +74,3 @@ public class Test_Order extends Util {
         }
     }
 }
-
-//        String sql = "SELECT users.firstname, product.nameproduct, product.price, shoporder.iduser, shoporder.idproduct " +
-//                "FROM shoporder " +
-//                "JOIN product " +
-//                "ON shoporder.idproduct = product.idproduct " +
-//                "JOIN users " +
-//                "ON shoporder.iduser = users.iduser ";
