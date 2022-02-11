@@ -94,7 +94,7 @@ public class Users {
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", sex='" + sex + '\'' +
-                ", age=" + age + " "/* +
-                '}' + '\n'*/;
+                ", age=" + age + " " +
+                '}' + '\n';
     }
 }

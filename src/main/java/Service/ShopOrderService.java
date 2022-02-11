@@ -16,7 +16,7 @@ public class ShopOrderService extends Util implements ShopOrderDAO {
     public void addShoporder(Shoporder shoporder) throws SQLException {
         PreparedStatement preparedStatement = null;
 
-        String sql ="INSERT INTO SHOPORDER (IDSHOPORDER, IDUSER, IDPRODUCT) VALUE (?, ? , ?)";
+        String sql ="INSERT INTO SHOPORDER (idorder, iduser, idproduct) VALUE (?, ? , ?)";
 
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -71,7 +71,7 @@ public class ShopOrderService extends Util implements ShopOrderDAO {
     @Override
     public Shoporder getByIdShoporder(int idorder) throws SQLException {
 
-        String sql = "SELECT IDUSER, IDPRODUCT WHERE IDSHOPORDER = ?";
+        String sql = "SELECT idorder, IDUSER, IDPRODUCT from shoporder WHERE idorder = ?";
 
         PreparedStatement preparedStatement = null;
 
@@ -95,7 +95,7 @@ public class ShopOrderService extends Util implements ShopOrderDAO {
                 preparedStatement.close();
             }
         }
-        return null;
+        return shoporder;
     }
 
     @Override

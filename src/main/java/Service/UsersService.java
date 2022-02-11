@@ -25,8 +25,8 @@ public class UsersService extends Util implements UserDAO {
             preparedStatement.setLong(1, users.getIduser());
             preparedStatement.setString(2, users.getFirstname());
             preparedStatement.setString(3, users.getLastname());
-            preparedStatement.setInt(4, users.getAge());
-            preparedStatement.setString(5, users.getSex());
+            preparedStatement.setString(4, users.getSex());
+            preparedStatement.setInt(5, users.getAge());
 
             preparedStatement.executeUpdate();
 
@@ -57,8 +57,9 @@ public class UsersService extends Util implements UserDAO {
                 users.setIduser(resultSet.getInt("IdUser"));
                 users.setFirstname(resultSet.getString("firstname"));
                 users.setLastname(resultSet.getString("lastname"));
-                users.setAge(resultSet.getInt("age"));
                 users.setSex(resultSet.getString("sex"));
+                users.setAge(resultSet.getInt("age"));
+
 
                 usersList.add(users);
             }
@@ -75,8 +76,10 @@ public class UsersService extends Util implements UserDAO {
     @Override
     public Users getByIdUsers(int iduser) throws SQLException {
 
-        String sql = "SELECT IDUSER, FIRSTNAME, LASTNAME, AGE, SEX";
+        String sql = "SELECT IDUSER, FIRSTNAME, LASTNAME, AGE, SEX FROM users WHERE (iduser =?)";
+
         PreparedStatement preparedStatement = null;
+
         Users users = new Users();
 
         try {
@@ -86,11 +89,11 @@ public class UsersService extends Util implements UserDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
 
-                users.setIduser(resultSet.getInt("idUser"));
-                users.setFirstname(resultSet.getString("FirstNameUser"));
-                users.setLastname(resultSet.getString("LastNameUser"));
-                users.setAge(resultSet.getInt("AgeUser"));
-                users.setSex(resultSet.getString("AgeUser"));
+                users.setIduser(resultSet.getInt("iduser"));
+                users.setFirstname(resultSet.getString("firstname"));
+                users.setLastname(resultSet.getString("lastname"));
+                users.setSex(resultSet.getString("sex"));
+                users.setAge(resultSet.getInt("age"));
 
         } catch (SQLException e) {
             e.printStackTrace();

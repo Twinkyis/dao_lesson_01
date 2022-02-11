@@ -11,7 +11,18 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProductServiceTest {
 
     @Test
-    void addProduct() {
+    void addProduct() throws SQLException {
+
+        Product product = new Product();
+
+        product.setIdproduct(22);
+        product.setNameproduct("Product_Test_01");
+        product.setPrice(244222);
+        product.setDiscription("Discription");
+
+        ProductService productService = new ProductService();
+        productService.addProduct(product);
+        System.out.println(productService.getAllProduct());
     }
 
 
@@ -156,10 +167,25 @@ class ProductServiceTest {
     }
 // "ProductEntity{idproduct=1, nameproduct='ferrari', price=200000, discription='great car'}, ProductEntity{idproduct=2, nameproduct='porshe', price=435000, discription='legendary car'},  ProductEntity{idproduct=3, nameproduct='ВАЗ', price=21000, discription='just car'},   ProductEntity{idproduct=4, nameproduct='Pejo', price=43000, discription='car'},  ProductEntity{idproduct=5, nameproduct='formula_1', price=5444000, discription='ultra car'},  ProductEntity{idproduct=6, nameproduct='ford', price=45006, discription='-=-----'},  ProductEntity{idproduct=7, nameproduct='audi', price=655000, discription='something'},  ProductEntity{idproduct=8, nameproduct='acura', price=43000, discription='wow'},  ProductEntity{idproduct=9, nameproduct='astom_martin', price=544000, discription='yep'},  ProductEntity{idproduct=10, nameproduct='bmw', price=600000, discription='yeah'},  ProductEntity{idproduct=11, nameproduct='bentley', price=87600, discription='-------'},  ProductEntity{idproduct=12, nameproduct='frod mustang', price=540000, discription='cool'},  ProductEntity{idproduct=56, nameproduct='ferri', price=3453422, discription='ddddd'},  ProductEntity{idproduct=435, nameproduct='BMW X5', price=654444, discription='bla-bla'}"
     @Test
-    void updateProduct() {
+    void updateProduct() throws SQLException {
+
+        Product product1 = new Product();
+
+        product1.setIdproduct(6);
+        product1.setNameproduct("New_Name_Product");
+        product1.setPrice(777888);
+        product1.setDiscription("String");
+
+        ProductService productService = new ProductService();
+        productService.updateProduct(product1);
+        System.out.println(productService.getAllProduct());
     }
 
     @Test
-    void removeProduct() {
+    void removeProduct() throws SQLException {
+
+        ProductService productService = new ProductService();
+        productService.removeProduct(productService.getByIdProduct(22));
+        System.out.println(productService.getAllProduct());
     }
 }

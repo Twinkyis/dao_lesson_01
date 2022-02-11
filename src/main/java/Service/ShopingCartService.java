@@ -17,13 +17,13 @@ public class ShopingCartService extends Util implements ShopingCartDAO {
 
         PreparedStatement preparedStatement = null;
 
-        String sql = "INSERT INTO SHOPINGCART (IDSHOPINGCART, iduser, idorder) VALUE (?, ?, ?)";
+        String sql = "INSERT INTO shopingcart (idshopingcart, iduser, idorder) VALUE (?, ?, ?)";
 
         try {
             preparedStatement = connection.prepareStatement(sql);
 
             preparedStatement.setLong(1, shopingcart.getIdshopingcart());
-            preparedStatement.setLong(1, shopingcart.getIduser());
+            preparedStatement.setLong(2, shopingcart.getIduser());
             preparedStatement.setLong(3, shopingcart.getIdorder());
 
             preparedStatement.executeUpdate();
@@ -71,7 +71,7 @@ public class ShopingCartService extends Util implements ShopingCartDAO {
     @Override
     public Shopingcart getByIdShopingcart(int idshopingcart) throws SQLException {
 
-        String sql = "SELECT IDUSER, IDORDER FROM SHOPINGCART WHERE (IDSHOPINGCART = ?)";
+        String sql = "SELECT idshopingcart, iduser, idorder FROM shopingcart WHERE (idshopingcart = ?)";
 
         PreparedStatement preparedStatement = null;
 
@@ -84,9 +84,9 @@ public class ShopingCartService extends Util implements ShopingCartDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
 
-                shopingcart.setIdshopingcart(resultSet.getInt("IdShopingCart"));
-                shopingcart.setIduser(resultSet.getInt("IdUser"));
-                shopingcart.setIdorder(resultSet.getInt("IdOrder"));
+                shopingcart.setIdshopingcart(resultSet.getInt("idshopingcart"));
+                shopingcart.setIduser(resultSet.getInt("iduser"));
+                shopingcart.setIdorder(resultSet.getInt("idorder"));
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -95,7 +95,7 @@ public class ShopingCartService extends Util implements ShopingCartDAO {
                 preparedStatement.close();
             }
         }
-        return null;
+        return shopingcart;
     }
 
     @Override

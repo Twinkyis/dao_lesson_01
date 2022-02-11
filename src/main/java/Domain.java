@@ -1,15 +1,26 @@
 import Service.*;
 import entity.Product;
+import entity.Shopingcart;
 import entity.Shoporder;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
 public class Domain {
+
     public static void main(String[] args) {
 
 
+UsersService usersService = new UsersService();
+        ShopingCartService shopingCartService = new ShopingCartService();
 
+try {
+    System.out.println(shopingCartService.getByIdShopingcart(7));
+} catch (SQLException e) {
+    e.printStackTrace();
+}
 
 //        ProductService productService = new ProductService();
 //
