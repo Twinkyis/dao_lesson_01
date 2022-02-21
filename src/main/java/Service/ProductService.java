@@ -67,9 +67,6 @@ public class ProductService extends Util implements ProductDAO {
             if (statement != null) {
                 statement.close();
             }
-//            if (connection != null){
-//                connection.close();
-//            }
         }
         return productList;
     }

@@ -1,26 +1,46 @@
+import B_logic.hibernate_Util;
 import Service.*;
+import Service_hibernate.ProductService_hibernate;
 import entity.Product;
 import entity.Shopingcart;
 import entity.Shoporder;
+import entity_hibernate.Product_Hibernate;
+import org.hibernate.Session;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.logging.LogManager;
-import java.util.logging.Logger;
 
 public class Domain {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
+
+        //========================================================= Hibernate =========================================================
+
+        ProductService_hibernate productService_hibernate = new ProductService_hibernate();
+        System.out.println(productService_hibernate.getByIdProduct(1));
 
 
-UsersService usersService = new UsersService();
-        ShopingCartService shopingCartService = new ShopingCartService();
+//===================================================== Remove ====================================================================
 
-try {
-    System.out.println(shopingCartService.getByIdShopingcart(7));
-} catch (SQLException e) {
-    e.printStackTrace();
-}
+//        ProductService productService = new ProductService();
+//
+//        try {
+//            productService.removeProduct(productService.getByIdProduct(547));
+//            System.out.println(productService.getAllProduct());
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+
+//===================================================================================================================================
+
+//        UsersService usersService = new UsersService();
+//        ShopingCartService shopingCartService = new ShopingCartService();
+
+//        try {
+//            System.out.println(test_order.getByOrder());
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//}
 
 //        ProductService productService = new ProductService();
 //
@@ -29,9 +49,6 @@ try {
 //        } catch (SQLException e) {
 //            e.printStackTrace();
 //        }
-
-
-
 
 
 //        ProductService productService = new ProductService();
@@ -61,5 +78,5 @@ try {
 //        }
 
 
+        }
     }
-}
