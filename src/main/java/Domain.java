@@ -1,24 +1,50 @@
-import B_logic.hibernate_Util;
-import Service.*;
-import Service_hibernate.ProductService_hibernate;
-import entity.Product;
-import entity.Shopingcart;
-import entity.Shoporder;
-import entity_hibernate.Product_Hibernate;
-import org.hibernate.Session;
+import MultiThread.Var_2.Thread_3;
+import MultiThread.Var_2.Thread_4;
 
+import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
 
 public class Domain {
 
-    public static void main(String[] args) throws SQLException {
+//    private static final Logger logger = Logger.getGlobal();
 
-        //========================================================= Hibernate =========================================================
+    public static void main(String[] args) throws SQLException, IOException {
 
-        ProductService_hibernate productService_hibernate = new ProductService_hibernate();
-        System.out.println(productService_hibernate.getByIdProduct(1));
 
+        //===================================== Var_1 ==============================================================
+
+//        Thread_1 thread_1 = new Thread_1();
+//        Thread_2 thread_2 = new Thread_2();
+//        thread_1.start();
+//        thread_2.start();
+
+
+        //==========================================================================================================
+
+        //=================================== Var_2 ================================================================
+
+        Thread thread1 = new Thread(new Thread_3());
+        Thread thread2 = new Thread(new Thread_4());
+        thread1.start();
+        thread2.start();
+
+
+
+//        Handler fileHandler = new FileHandler();
+//            logger.setUseParentHandlers();
+//            logger.addHandler(fileHandler);
+//            logger.info("info");
+//        //========================================================= Hibernate =========================================================
+//        try {
+//            System.out.println("Hello world");
+//
+//            ProductService_hibernate productService_hibernate = new ProductService_hibernate();
+//            System.out.println(productService_hibernate.getAllProduct());
+//
+//            System.out.println("End");
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
 
 //===================================================== Remove ====================================================================
 

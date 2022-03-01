@@ -1,4 +1,4 @@
-package Service_hibernate;
+package Servicehibernate;
 
 import B_logic.hibernate_Util;
 import dao.ShopingCartDAO;

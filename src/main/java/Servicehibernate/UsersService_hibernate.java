@@ -1,4 +1,4 @@
-package Service_hibernate;
+package Servicehibernate;
 
 import B_logic.Session_Util;
 import DAO_hibernate.User_hibernate_DAO;

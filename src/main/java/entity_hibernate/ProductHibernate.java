@@ -4,12 +4,16 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "product", schema = "mydb", catalog = "")
-public class Product_Hibernate {
+public class ProductHibernate {
 
     private int idproduct;
     private String nameproduct;
     private int price;
     private String discription;
+
+//    @OneToMany (cascade = CascadeType.ALL)
+//    @JoinColumn(name = "idorder")
+//    private Shoporder_Hibernate shoporder_hibernate;
 
     @Id
     @Column(name = "idproduct", nullable = false)
@@ -58,7 +62,7 @@ public class Product_Hibernate {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Product_Hibernate that = (Product_Hibernate) o;
+        ProductHibernate that = (ProductHibernate) o;
 
         if (idproduct != that.idproduct) return false;
         if (price != that.price) return false;

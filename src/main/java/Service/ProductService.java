@@ -1,16 +1,22 @@
 package Service;
 
+import B_logic.Session_Util;
 import B_logic.Util;
+import DAO_hibernate.Product_hibernate_DAO;
 import dao.ProductDAO;
 import entity.Product;
+import entity_hibernate.ProductHibernate;
+import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductService extends Util implements ProductDAO {
+public class ProductService extends Util  implements ProductDAO {
 
     Connection connection = getConnection();
+
 
     @Override
     public void addProduct(Product product) throws SQLException {
@@ -43,7 +49,8 @@ public class ProductService extends Util implements ProductDAO {
 
         List <Product> productList = new ArrayList<>();
 
-        String sql = "SELECT IDPRODUCT, NAMEPRODUCT, PRICE, DISCRIPTION FROM PRODUCT";
+        String sql = "SELECT * FROM PRODUCT";
+        //IDPRODUCT, NAMEPRODUCT, PRICE, DISCRIPTION
 
         Statement statement = null;
 
@@ -157,3 +164,4 @@ public class ProductService extends Util implements ProductDAO {
 
 
 }
+
